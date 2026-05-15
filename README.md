@@ -1,4 +1,4 @@
-# 🩺 PneumoScan AI — Explainable Pneumonia Detection
+# 🩺 PneumoScan AI
 
 > **Empowering clinical decisions through Deep Learning and Grad-CAM transparency.**
 
