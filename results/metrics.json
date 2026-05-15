@@ -1,0 +1,23 @@
+{
+    "threshold_default": {
+        "threshold": 0.5,
+        "accuracy": 0.9268,
+        "precision": 0.9767,
+        "recall": 0.9215,
+        "f1": 0.9483,
+        "auc_roc": 0.98
+    },
+    "threshold_optimal": {
+        "threshold": 0.4665,
+        "accuracy": 0.9336,
+        "precision": 0.9769,
+        "recall": 0.9309,
+        "f1": 0.9534,
+        "auc_roc": 0.98
+    },
+    "dataset": {
+        "test_samples": 874,
+        "normal_samples": 237,
+        "pneumonia_samples": 637
+    }
+}

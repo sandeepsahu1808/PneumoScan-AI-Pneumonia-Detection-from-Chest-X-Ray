@@ -1,0 +1,19 @@
+# Environments
+venv/
+.env
+
+# Data & Models
+data/
+*.h5
+*.zip
+*.rar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
