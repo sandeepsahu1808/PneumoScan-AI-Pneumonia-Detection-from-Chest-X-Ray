@@ -1,12 +1,23 @@
-# PneumoScan AI — Pneumonia Detection from Chest X-Rays
+# 🩺 PneumoScan AI — Explainable Pneumonia Detection
 
-Deep learning system for automated pneumonia detection from chest X-rays using ResNet50 transfer learning, Grad-CAM explainability, and real-time Streamlit inference.
+> **Empowering clinical decisions through Deep Learning and Grad-CAM transparency.**
+
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13+-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Model-Accuracy](https://img.shields.io/badge/Accuracy-93.4%25-brightgreen?style=for-the-badge)](https://github.com/sandeepsahu1808/PneumoScan-AI-Pneumonia-Detection-from-Chest-X-Ray)
+
+PneumoScan AI is a high-precision medical imaging assistant designed to detect pneumonia in chest X-rays. Built on the **ResNet50** architecture and fine-tuned for clinical reliability, it doesn't just provide a diagnosis—it provides **visual evidence** via **Grad-CAM (Gradient-weighted Class Activation Mapping)**, highlighting the specific lung regions that influenced the model's decision.
 
 ---
 
-## App Demo
+## 🚀 App Interface
 
-![App Demo](results/app_screenshot.png)
+Displaying the AI-powered dashboard featuring real-time inference and explainable heatmap visualizations.
+
+![App Dashboard](results/app_demo_1.png)
+![Detection Result Pneumonia](results/app_demo_2.png)
+![Detection Result Normal](results/app_demo_3.png)
 
 ---
 
