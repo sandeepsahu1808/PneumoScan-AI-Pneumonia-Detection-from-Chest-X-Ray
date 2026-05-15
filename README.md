@@ -1,4 +1,4 @@
-# 🩺 PneumoScan AI
+# 🩺 PneumoScan AI — Pneumonia Detection from Chest X-Ray
 
 > **Empowering clinical decisions through Deep Learning and Grad-CAM transparency.**
 
