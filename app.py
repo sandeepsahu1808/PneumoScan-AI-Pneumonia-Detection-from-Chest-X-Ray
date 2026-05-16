@@ -10,7 +10,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 
 # Ensure src modules can be imported
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-from gradcam import get_gradcam_heatmap, overlay_heatmap
+from src.gradcam import get_gradcam_heatmap, overlay_heatmap
 
 # Prevent Mac GPU (MPS) from freezing during Streamlit inference
 tf.config.set_visible_devices([], 'GPU')
