@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import gdown
 import numpy as np
 import streamlit as st
 from PIL import Image
@@ -293,10 +294,22 @@ h1, h2, h3, h4, p, span, label, div { color: #E2E8F0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
+# ─── MODEL WEIGHTS (Google Drive) ────────────────────────────────────────────────
+_MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'best_model.h5')
+_GDRIVE_FILE_ID = os.getenv('GDRIVE_MODEL_FILE_ID', 'YOUR_FILE_ID')
+
+if not os.path.exists(_MODEL_PATH) and _GDRIVE_FILE_ID != 'YOUR_FILE_ID':
+    os.makedirs(os.path.dirname(_MODEL_PATH), exist_ok=True)
+    gdown.download(
+        f'https://drive.google.com/uc?id={_GDRIVE_FILE_ID}',
+        _MODEL_PATH,
+        quiet=False,
+    )
+
 # ─── MODEL LOADING ───────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_pneumonia_model():
-    model_path = os.path.join(os.path.dirname(__file__), 'models', 'best_model.h5')
+    model_path = _MODEL_PATH
     if os.path.exists(model_path):
         return load_model(model_path, compile=False)
     return None

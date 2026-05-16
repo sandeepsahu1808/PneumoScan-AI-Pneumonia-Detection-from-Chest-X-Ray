@@ -6,6 +6,7 @@ seaborn
 scikit-learn
 opencv-python
 streamlit
+gdown
 Pillow
 tqdm
 opencv-python-headless
