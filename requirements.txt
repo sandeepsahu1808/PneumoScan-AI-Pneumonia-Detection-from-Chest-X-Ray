@@ -8,3 +8,4 @@ opencv-python
 streamlit
 Pillow
 tqdm
+opencv-python-headless
