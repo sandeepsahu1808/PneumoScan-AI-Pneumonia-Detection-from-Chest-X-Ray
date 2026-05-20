@@ -1,8 +1,9 @@
 import os
 import numpy as np
 import tensorflow as tf
-import cv2
+import matplotlib.cm as cm
 import matplotlib.pyplot as plt
+from PIL import Image
 from tensorflow.keras.models import load_model
 
 # Force CPU for evaluation to prevent Mac GPU (MPS) freezing
@@ -42,25 +43,19 @@ def get_gradcam_heatmap(model, img_array, last_conv_layer_name='conv5_block3_out
     return heatmap.numpy()
 
 def overlay_heatmap(heatmap, original_img, alpha=0.4):
-    # Ensure original_img is in 0-255 range for cv2
     if original_img.max() <= 1.0:
         original_img = np.uint8(255 * original_img)
     else:
         original_img = np.uint8(original_img)
-        
-    # Resize heatmap to match image size
-    heatmap = cv2.resize(heatmap, (original_img.shape[1], original_img.shape[0]))
-    
-    # Convert heatmap to RGB using cv2 colormap
-    heatmap = np.uint8(255 * heatmap)
-    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-    heatmap = cv2.cvtColor(heatmap, cv2.COLOR_BGR2RGB)
-    
-    # Superimpose heatmap
-    superimposed_img = heatmap * alpha + original_img * (1 - alpha)
-    superimposed_img = np.clip(superimposed_img, 0, 255).astype(np.uint8)
-    
-    return superimposed_img
+
+    h, w = original_img.shape[:2]
+    heatmap_resized = np.array(
+        Image.fromarray(np.uint8(255 * heatmap)).resize((w, h), Image.Resampling.BILINEAR)
+    ) / 255.0
+
+    heatmap_rgb = (cm.jet(heatmap_resized)[:, :, :3] * 255).astype(np.uint8)
+    superimposed_img = heatmap_rgb * alpha + original_img * (1 - alpha)
+    return np.clip(superimposed_img, 0, 255).astype(np.uint8)
 
 def generate_gradcam_samples(model, test_gen, n_samples=10, save_dir='results/gradcam/'):
     os.makedirs(save_dir, exist_ok=True)
