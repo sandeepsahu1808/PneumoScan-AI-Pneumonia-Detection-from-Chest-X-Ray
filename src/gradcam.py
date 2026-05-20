@@ -5,8 +5,6 @@ import cv2
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 
-from data_pipeline import get_generators
-
 # Force CPU for evaluation to prevent Mac GPU (MPS) freezing
 tf.config.set_visible_devices([], 'GPU')
 
@@ -110,6 +108,8 @@ def generate_gradcam_samples(model, test_gen, n_samples=10, save_dir='results/gr
     print(f"Saved visualizations to {save_dir}")
 
 if __name__ == '__main__':
+    from data_pipeline import get_generators
+
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     merged_data_dir = os.path.join(base_dir, 'data', 'merged')
     models_dir = os.path.join(base_dir, 'models')
